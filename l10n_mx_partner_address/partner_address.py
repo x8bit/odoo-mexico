@@ -89,9 +89,9 @@ class res_partner(osv.Model):
                             <div attrs="{'invisible': [('parent_id','=', False)]}" name="div_type">
                                 <field class="oe_inline"
                                     name="type"/>
-                                <label for="use_parent_address" class="oe_edit_only"/>
+                                <!-- <label for="use_parent_address" class="oe_edit_only"/>
                                 <field name="use_parent_address" class="oe_edit_only oe_inline"
-                                    on_change="onchange_address(use_parent_address, parent_id)"/>
+                                    on_change="onchange_address(use_parent_address, parent_id)"/> -->
                             </div>
 
                             <label for="street" string="Address"/>
@@ -117,8 +117,8 @@ class res_partner(osv.Model):
                             <field name="mobile"/>
                             <field name="fax"/>
                             <field name="email" widget="email"/>
-                            <field name="title" domain="[('domain', '=', 'contact')]"
-                                options='{"no_open": True}' attrs="{'invisible': [('is_company','=', True)]}" />
+                            <!-- <field name="title" domain="[('domain', '=', 'contact')]"
+                                options='{"no_open": True}' attrs="{'invisible': [('is_company','=', True)]}" /> -->
                         </group>
                     </group>
             """ % (street, external, internal, street2, city, state, cp, locality, country)
