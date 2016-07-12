@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
 ###########################################################################
-#    Module Writen to OpenERP, Open Source Management Solution
+#    Module Writen to Odoo
 #
-#    Copyright (c) 2012 Vauxoo - http://www.vauxoo.com
+#    Copyright (c) 2011 X8BIT - http://www.x8bit.com
 #    All Rights Reserved.
-#    info@vauxoo.com
+#    info@x8bit.com
 ############################################################################
-#    Coded by: moylop260 (moylop260@vauxoo.com)
-#    Coded by: isaac (isaac@vauxoo.com)
+#    Coded by: Juan Carlos del Valle (juan@x8bit.com)
 ############################################################################
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -25,26 +24,18 @@
 #
 ##############################################################################
 
-{
-    "name" : "Agregado del método de pago al partner y a la factura",
-    "version" : "1.0",
-    "author" : "Vauxoo",
-    "category" : "Localization/Mexico",
-    "description" : """Add "Payment Method" to partner and invoice, it's used by l10n_mx_facturae_22 module
-    """,
-    "website" : "www.vauxoo.com",
-    "depends" : ["account",
-        ],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
-        "security/payment_method.xml",
-        "security/ir.model.access.csv",
-        "pay_method_view_v5.xml",
-        "partner_view.xml",
-        "invoice_view_v5.xml",
-        "data/payment_method_data.xml",
-    ],
-    "installable" : True,
-    "active" : False,
-}
+from openerp import models, fields, api
+import logging
+_logger = logging.getLogger(__name__)
+
+class account_invoice_x(models.Model):
+	_inherit = "account.invoice"
+
+	@api.onchange('partner_id')
+	def _onchange_partner(self):
+		if self.partner_id:
+			self.acc_payment = self.partner_id.acc_payment and self.partner_id.acc_payment.id or False
+			self.pay_method_id = self.partner_id.pay_method_id and self.partner_id.pay_method_id.id or False
+
+	pay_method_id = fields.Many2one('l10n_mx.pay.method', string='Payment Method', readonly=True, states={'draft': [('readonly', False)]}, help="Método de pago para esta factura")
+	acc_payment = fields.Many2one('res.partner.bank', string='Account Number', readonly=True, states={'draft': [('readonly', False)]}, help="Cuenta con la que se pagará esta factura")

@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
 ###########################################################################
-#    Module Writen to OpenERP, Open Source Management Solution
+#    Module Writen to Odoo
 #
-#    Copyright (c) 2011 Vauxoo - http://www.vauxoo.com
+#    Copyright (c) 2011 X8BIT - http://www.x8bit.com
 #    All Rights Reserved.
-#    info@vauxoo.com
+#    info@x8bit.com
 ############################################################################
-#    Coded by: moylop260 (moylop260@vauxoo.com)
-#    Coded by: isaac (isaac@vauxoo.com)
+#    Coded by: Juan Carlos del Valle (juan@x8bit.com)
 ############################################################################
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -25,16 +24,10 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
-from openerp.tools.translate import _
-from openerp import pooler, tools
+from openerp import models, fields
 
-import time
+class res_partner(models.Model):
+    _inherit = 'res.partner'
 
-
-class pay_method(osv.Model):
-    _name = 'pay.method'
-    _columns = {
-        'name': fields.char('Payment Method', size=128),
-        'description': fields.text('Description'),
-    }
+    pay_method_id = fields.Many2one('l10n_mx.pay.method', string='Payment Method', help="Método de pago por defecto del cliente")
+    acc_payment = fields.Many2one('res.partner.bank', string='Default Account Number', help="Cuenta de pago por defecto del cliente")

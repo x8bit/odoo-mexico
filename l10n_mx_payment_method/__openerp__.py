@@ -1,51 +1,20 @@
-# -*- encoding: utf-8 -*-
-###########################################################################
-#    Module Writen to OpenERP, Open Source Management Solution
-#
-#    Copyright (c) 2012 Vauxoo - http://www.vauxoo.com
-#    All Rights Reserved.
-#    info@vauxoo.com
-############################################################################
-#    Coded by: moylop260 (moylop260@vauxoo.com)
-#    Coded by: isaac (isaac@vauxoo.com)
-############################################################################
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
-
 {
-    "name" : "Agrega método de pago al partner y factura",
-    "version" : "1.0",
-    "author" : "Vauxoo",
-    "category" : "Localization/Mexico",
-    "description" : """Add "Payment Method" to partner and invoice, 
-    it's used by l10n_mx_facturae module and "acc_payment" to invoice
+    'name': "Agrega método de pago al partner y factura ( 2016 )",
+    'version': '1.0',
+    'author': "X8BIT SA DE CV",
+    'category': 'Localization/Mexico',
+    'depends': ['account'],
+    'description': """
+    Agrega método de pago al partner y factura ( 2016 )
     """,
-    "website" : "www.vauxoo.com",
-    "license" : "AGPL-3",
-    "depends" : ["account", "l10n_mx_facturae_groups",
-        ],
-    "demo" : [],
-    "data" : [
-        #"security/payment_method.xml",
-        "security/ir.model.access.csv",
-        "pay_method_view.xml",
-        "partner_view.xml",
-        "invoice_view.xml",
-        "data/payment_method_data.xml",
+    # data files always loaded at installation
+    'data': [
+        'security/ir.model.access.csv',
+        'views/pay_method.xml',
+        'views/partner.xml',
+        'views/invoice.xml',
+        'data/payment_method_data.xml',
     ],
-    "installable" : True,
-    "active" : False,
+    'installable': True,
+    'auto_install': False,
 }

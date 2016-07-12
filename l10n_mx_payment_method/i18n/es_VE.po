@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Launchpad (build 17196)\n"
 
 #. module: l10n_mx_payment_method
-#: model:ir.model,name:l10n_mx_payment_method.model_pay_method
+#: model:ir.model,name:l10n_mx_payment_method.model_l10n_mx_pay_method
 msgid "pay.method"
 msgstr ""
 

@@ -1,13 +1,12 @@
 # -*- encoding: utf-8 -*-
 ###########################################################################
-#    Module Writen to OpenERP, Open Source Management Solution
+#    Module Writen to Odoo
 #
-#    Copyright (c) 2011 Vauxoo - http://www.vauxoo.com
+#    Copyright (c) 2011 X8BIT - http://www.x8bit.com
 #    All Rights Reserved.
-#    info@vauxoo.com
+#    info@x8bit.com
 ############################################################################
-#    Coded by: moylop260 (moylop260@vauxoo.com)
-#    Coded by: isaac (isaac@vauxoo.com)
+#    Coded by: Juan Carlos del Valle (juan@x8bit.com)
 ############################################################################
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -25,21 +24,10 @@
 #
 ##############################################################################
 
-import time
-from openerp.osv import fields, osv
-from openerp.tools.translate import _
-from openerp import pooler, tools
-from openerp import netsvc
-from openerp import release
+from openerp import models, fields
 
+class PayMethod(models.Model):
+    _name = 'l10n_mx.pay.method'
 
-class res_partner(osv.Model):
-    _inherit = 'res.partner'
-
-    _columns = {
-        'pay_method_id': fields.many2one('pay.method', 'Payment Method',
-                help='Indicates the way it was paid or will be paid the invoice, \
-                where the options could be: check, bank transfer, reservoir in \
-                account bank, credit card, cash etc. If not know as will be \
-                paid the invoice, leave empty and the XML show “Unidentified”.'),
-    }
+    name = fields.Char(string="Método de Pago", required=True)
+    code = fields.Char(string="Clave", required=True)
