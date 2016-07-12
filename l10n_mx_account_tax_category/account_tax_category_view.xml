@@ -45,7 +45,7 @@
 
         <menuitem action="action_account_tax_category_tree"
                 id="menu_account_tax_category" sequence="50"
-                parent="account.next_id_27"
+                parent="account.menu_finance_configuration"
                 />
 
         <record id="view_account_tax_category_search" model="ir.ui.view">

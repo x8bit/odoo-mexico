@@ -354,8 +354,11 @@
                         <strong>Origen:</strong><p t-field="o.origin"/>
                     </td>
                     <td style="width:15%;">
-                        <strong>Referencia:</strong><p t-field="o.name"/>
+                        <div name="reference" class="col-xs-2" t-if="o.reference">
+                            <strong>Referencia:</strong><p t-field="o.name"/>
+                        </div>
                     </td>
+                                    
                     <td style="text-align:right;width:70%;">Importe con letra: <span t-field="o.amount_to_text"/></td>
                 </tr>
             </table>

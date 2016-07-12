@@ -22,7 +22,7 @@
 <!--
                <xpath expr="/sheet/notebook/page[@string='Other Info']/field[@name='tax_line']/tree/field[@name='name']" position="after">
 -->
-               <xpath expr="//field[@name='tax_line']/tree/field[@name='name']" position="after">
+               <xpath expr="//field[@name='tax_line_ids']/tree/field[@name='name']" position="after">
                     <field name='name2'/>
                     <field name='tax_percent'/>
                 </xpath>
