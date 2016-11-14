@@ -42,13 +42,13 @@ class sale_order(osv.Model):
             readonly=True, states={'draft': [('readonly', False)]}, help='Is \
             the account with which the client pays the invoice, if not know \
             which account will used for pay leave empty and the XML will show \
-            "Unidentified".'),
+            "Unidentified".', required=True),
         'pay_method_id': fields.many2one('pay.method', 'Payment Method',
             readonly=True, states={'draft': [('readonly', False)]},
             help='Indicates the way it was paid or will be paid the invoice, \
             where the options could be: check, bank transfer, reservoir in \
             account bank, credit card, cash etc. If not know as will be paid \
-            the invoice, leave empty and the XML show “Unidentified”.'),
+            the invoice, leave empty and the XML show “Unidentified”.', required=True),
             }
 
     def _prepare_invoice(self, cr, uid, order, lines, context=None):            
