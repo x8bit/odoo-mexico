@@ -37,5 +37,5 @@ class account_invoice_x(models.Model):
 			self.acc_payment = self.partner_id.acc_payment and self.partner_id.acc_payment.id or False
 			self.pay_method_id = self.partner_id.pay_method_id and self.partner_id.pay_method_id.id or False
 
-	pay_method_id = fields.Many2one('l10n_mx.pay.method', string='Payment Method', readonly=True, states={'draft': [('readonly', False)]}, help="Método de pago para esta factura")
-	acc_payment = fields.Many2one('res.partner.bank', string='Account Number', readonly=True, states={'draft': [('readonly', False)]}, help="Cuenta con la que se pagará esta factura")
+	pay_method_id = fields.Many2one('l10n_mx.pay.method', string='Payment Method', readonly=True, states={'draft': [('readonly', False)]}, required=True, help="Método de pago para esta factura")
+	acc_payment = fields.Many2one('res.partner.bank', string='Account Number', readonly=True, states={'draft': [('readonly', False)]}, required=True, help="Cuenta con la que se pagará esta factura")
